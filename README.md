@@ -1,2 +1,0 @@
-# **Personal Blog Site using HUGO and Obsidian**  
-### Designed and developed a personal blog site using HUGO, a static site generator, with content seamlessly integrated from Obsidian via a custom pipeline. The project features Markdown-based content management, responsive design, fast load times, and an elegant, minimalist theme. Focused on automating content updates, enhancing readability, and optimizing the site for SEO.

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Manual Installation on</title><link>https://vishwaravi.github.io/personal-blog-site/tags/manual-installation/</link><description>Recent content in Manual Installation on</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 04 May 2025 12:00:00 +0000</lastBuildDate><atom:link href="https://vishwaravi.github.io/personal-blog-site/tags/manual-installation/index.xml" rel="self" type="application/rss+xml"/><item><title>MySQL 8.4 Manual Installation on Arch Linux (Binary Package)</title><link>https://vishwaravi.github.io/personal-blog-site/posts/mysql8.4-on-arch/</link><pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate><guid>https://vishwaravi.github.io/personal-blog-site/posts/mysql8.4-on-arch/</guid><description>&lt;p>&lt;img src="https://vishwaravi.github.io/personal-blog-site/images/arch_mysql.png" alt="Image Description">&lt;/p>
+&lt;h2 id="mysql-in-arch-or-other-distros-">MySql in Arch or other Distros :&lt;/h2>
+&lt;p>MySQL provides prebuilt &lt;code>.deb&lt;/code> packages for Debian and Ubuntu, which can be installed using the APT package manager.&lt;/p>
+&lt;p>If you&amp;rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&amp;rsquo;t in the official repositories. Instead, you&amp;rsquo;ll find &lt;strong>MariaDB&lt;/strong>, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of &lt;strong>open-source values, community trust, and long-term sustainability&lt;/strong>.&lt;/p></description><content>&lt;p>&lt;img src="https://vishwaravi.github.io/personal-blog-site/images/arch_mysql.png" alt="Image Description">&lt;/p>
+&lt;h2 id="mysql-in-arch-or-other-distros-">MySql in Arch or other Distros :&lt;/h2>
+&lt;p>MySQL provides prebuilt &lt;code>.deb&lt;/code> packages for Debian and Ubuntu, which can be installed using the APT package manager.&lt;/p>
+&lt;p>If you&amp;rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&amp;rsquo;t in the official repositories. Instead, you&amp;rsquo;ll find &lt;strong>MariaDB&lt;/strong>, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of &lt;strong>open-source values, community trust, and long-term sustainability&lt;/strong>.&lt;/p>
+&lt;h4 id="archs-philosophy-and-the-community-preference">Arch’s Philosophy and the Community Preference&lt;/h4>
+&lt;p>Arch Linux is known for its &lt;strong>rolling-release model&lt;/strong> and a strong emphasis on &lt;strong>simplicity and openness&lt;/strong>. It avoids software with unclear or restrictive licenses whenever possible. Given that MariaDB is licensed under the &lt;strong>GNU General Public License (GPL)&lt;/strong> and developed in the open, it aligns more closely with Arch&amp;rsquo;s values than Oracle&amp;rsquo;s MySQL.&lt;/p>
+&lt;h2 id="-1-download-mysql-binary">📦 1. Download MySQL Binary&lt;/h2>
+&lt;p>In such cases, you can install MySQL directly from the &lt;strong>generic binary tarball&lt;/strong> provided by Oracle. This method gives you more control over the version and setup, making it ideal for custom or production environments. Below is a step-by-step guide to installing MySQL on Arch Linux using the official binary distribution.&lt;/p>
+&lt;p>Go to: &lt;a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/&lt;/a>&lt;br>
+Choose the latest Linux Generic binary (e.g., &lt;code>mysql-8.4.5-linux-glibc2.28-x86_64.tar.xz&lt;/code>).&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd ~/Downloads
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -xvf mysql-8.4.5-linux-glibc2.28-x86_64.tar.xz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mv mysql-8.4.5-linux-glibc2.28-x86_64 /usr/local/mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-2-create-mysql-user-and-group">👤 2. Create MySQL User and Group&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo groupadd mysql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo useradd -r -g mysql -s /bin/false mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-3-set-permissions">🔧 3. Set Permissions&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd /usr/local/mysql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mkdir mysql-files
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo chown -R mysql:mysql .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo chmod &lt;span style="color:#ae81ff">750&lt;/span> mysql-files
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-4-initialize-mysql-data-directory">🛠️ 4. Initialize MySQL Data Directory&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ./bin/mysqld --initialize --user&lt;span style="color:#f92672">=&lt;/span>mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>🔐 &lt;strong>Important:&lt;/strong> This will output a &lt;strong>temporary root password&lt;/strong>, like:&lt;/p>
+&lt;pre tabindex="0">&lt;code>A temporary password is generated for root@localhost: aB1cDe2FgH!
+&lt;/code>&lt;/pre>&lt;p>➡️ &lt;strong>Note it down&lt;/strong>, you&amp;rsquo;ll need it to log in for the first time.&lt;/p>
+&lt;hr>
+&lt;h2 id="-5-create-a-mysql-configuration-file">⚙️ 5. Create a MySQL Configuration File&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nano /usr/local/mysql/my.cnf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Paste:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-ini" data-lang="ini">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">[mysqld]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">basedir&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">/usr/local/mysql&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">datadir&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">/usr/local/mysql/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">socket&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">/tmp/mysql.sock&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pid-file&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">/usr/local/mysql/data/mysqld.pid&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">user&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">mysql&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-6-create-systemd-service">⚙️ 6. Create systemd Service&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nano /etc/systemd/system/mysql.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Paste:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-ini" data-lang="ini">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">[Unit]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Description&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">MySQL Community Server&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">After&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">network.target&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">[Service]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">forking&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ExecStart&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">/usr/local/mysql/bin/mysqld_safe --defaults-file=/usr/local/mysql/my.cnf&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ExecStop&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">/usr/local/mysql/bin/mysqladmin shutdown&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">mysql&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Group&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">mysql&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">TimeoutSec&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">600&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Restart&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">on-failure&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">[Install]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">WantedBy&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">multi-user.target&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-7-enable-and-start-mysql">🔄 7. Enable and Start MySQL&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl enable mysql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl start mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-8-verify-mysql-is-running">🔍 8. Verify MySQL Is Running&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl status mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Expected output: &lt;code>active (running)&lt;/code>&lt;/p>
+&lt;hr>
+&lt;h2 id="-9-log-in-with-temporary-password-and-set-new-root-password">🔐 9. Log In with Temporary Password and Set New Root Password&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/usr/local/mysql/bin/mysql -u root -p
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>🔑 Enter the &lt;strong>temporary password&lt;/strong> from step 4.&lt;/p>
+&lt;p>Then run:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">ALTER&lt;/span> &lt;span style="color:#66d9ef">USER&lt;/span> &lt;span style="color:#e6db74">&amp;#39;root&amp;#39;&lt;/span>&lt;span style="color:#f92672">@&lt;/span>&lt;span style="color:#e6db74">&amp;#39;localhost&amp;#39;&lt;/span> IDENTIFIED &lt;span style="color:#66d9ef">BY&lt;/span> &lt;span style="color:#e6db74">&amp;#39;your_secure_password&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>✅ Now you have full access with your new password.&lt;/p>
+&lt;hr>
+&lt;h2 id="-10-optional-run-secure-installation-script">🛡️ 10. Optional: Run Secure Installation Script&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo /usr/local/mysql/bin/mysql_secure_installation
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will:&lt;/p>
+&lt;ul>
+&lt;li>Remove anonymous users&lt;/li>
+&lt;li>Disallow remote root login&lt;/li>
+&lt;li>Remove test database&lt;/li>
+&lt;li>Reload privilege tables&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="-tip-add-mysql-to-your-path">🧠 Tip: Add MySQL to Your PATH&lt;/h2>
+&lt;p>To avoid typing full paths every time:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#39;export PATH=/usr/local/mysql/bin:$PATH&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>source ~/.bashrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item></channel></rss>
