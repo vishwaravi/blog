@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manual Installation on </title>
-    <link>//localhost:1313/tags/manual-installation/</link>
+    <link>http://localhost:1313/personal-blog-site/tags/manual-installation/</link>
     <description>Recent content in Manual Installation on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 04 May 2025 12:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/manual-installation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 May 2025 12:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/personal-blog-site/tags/manual-installation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL 8.4 Manual Installation on Arch Linux (Binary Package)</title>
-      <link>//localhost:1313/posts/mysql8.4-on-arch/</link>
+      <link>http://localhost:1313/personal-blog-site/posts/mysql8.4-on-arch/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/mysql8.4-on-arch/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/arch_mysql.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+      <guid>http://localhost:1313/personal-blog-site/posts/mysql8.4-on-arch/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/personal-blog-site/images/arch_mysql.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;mysql-in-arch-or-other-distros-&#34;&gt;MySql in Arch or other Distros :&lt;/h2&gt;
 &lt;p&gt;MySQL provides prebuilt &lt;code&gt;.deb&lt;/code&gt; packages for Debian and Ubuntu, which can be installed using the APT package manager.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&amp;rsquo;t in the official repositories. Instead, you&amp;rsquo;ll find &lt;strong&gt;MariaDB&lt;/strong&gt;, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of &lt;strong&gt;open-source values, community trust, and long-term sustainability&lt;/strong&gt;.&lt;/p&gt;</description>
-      <content>&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/arch_mysql.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+      <content>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/personal-blog-site/images/arch_mysql.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;mysql-in-arch-or-other-distros-&#34;&gt;MySql in Arch or other Distros :&lt;/h2&gt;
 &lt;p&gt;MySQL provides prebuilt &lt;code&gt;.deb&lt;/code&gt; packages for Debian and Ubuntu, which can be installed using the APT package manager.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&amp;rsquo;t in the official repositories. Instead, you&amp;rsquo;ll find &lt;strong&gt;MariaDB&lt;/strong&gt;, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of &lt;strong&gt;open-source values, community trust, and long-term sustainability&lt;/strong&gt;.&lt;/p&gt;

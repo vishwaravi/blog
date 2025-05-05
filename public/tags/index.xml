@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
-    <link>//localhost:1313/tags/</link>
+    <link>http://localhost:1313/personal-blog-site/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 04 May 2025 12:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 May 2025 12:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/personal-blog-site/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch Linux</title>
-      <link>//localhost:1313/tags/arch-linux/</link>
+      <link>http://localhost:1313/personal-blog-site/tags/arch-linux/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/tags/arch-linux/</guid>
+      <guid>http://localhost:1313/personal-blog-site/tags/arch-linux/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>Binary Package</title>
-      <link>//localhost:1313/tags/binary-package/</link>
+      <link>http://localhost:1313/personal-blog-site/tags/binary-package/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/tags/binary-package/</guid>
+      <guid>http://localhost:1313/personal-blog-site/tags/binary-package/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>Manual Installation</title>
-      <link>//localhost:1313/tags/manual-installation/</link>
+      <link>http://localhost:1313/personal-blog-site/tags/manual-installation/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/tags/manual-installation/</guid>
+      <guid>http://localhost:1313/personal-blog-site/tags/manual-installation/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>//localhost:1313/tags/mysql/</link>
+      <link>http://localhost:1313/personal-blog-site/tags/mysql/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/tags/mysql/</guid>
+      <guid>http://localhost:1313/personal-blog-site/tags/mysql/</guid>
       <description></description>
       <content></content>
     </item>
