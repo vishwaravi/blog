@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>MySQL 8.4 Manual Installation on Arch Linux (Binary Package) :: </title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Step-by-step guide to manually install MySQL 8.4 on Arch Linux using the official binary tarball." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="//localhost:1313/posts/mysql8.4-on-arch/" />
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="//localhost:1313/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="//localhost:1313/img/theme-colors/orange.png">
+  <link rel="apple-touch-icon" href="//localhost:1313/img/theme-colors/orange.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="MySQL 8.4 Manual Installation on Arch Linux (Binary Package)">
+<meta property="og:description" content="Step-by-step guide to manually install MySQL 8.4 on Arch Linux using the official binary tarball." />
+<meta property="og:url" content="//localhost:1313/posts/mysql8.4-on-arch/" />
+<meta property="og:site_name" content="" />
+
+  
+    <meta property="og:image" content="//localhost:1313/img/favicon/orange.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-05-04 12:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+</head>
+<body class="orange">
+
+
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    re-Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="/showcase" >Showcase</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/mysql8.4-on-arch/">MySQL 8.4 Manual Installation on Arch Linux (Binary Package)</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-05-04</time>
+    
+</div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="//localhost:1313/tags/mysql/">MySQL</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/arch-linux/">Arch Linux</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/manual-installation/">Manual Installation</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/binary-package/">Binary Package</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+
+  
+
+  <div class="post-content"><div>
+        <p><img src="/images/arch_mysql.png" alt="Image Description"></p>
+<h2 id="mysql-in-arch-or-other-distros-">MySql in Arch or other Distros :<a href="#mysql-in-arch-or-other-distros-" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>MySQL provides prebuilt <code>.deb</code> packages for Debian and Ubuntu, which can be installed using the APT package manager.</p>
+<p>If you&rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&rsquo;t in the official repositories. Instead, you&rsquo;ll find <strong>MariaDB</strong>, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of <strong>open-source values, community trust, and long-term sustainability</strong>.</p>
+<h4 id="archs-philosophy-and-the-community-preference">Arch’s Philosophy and the Community Preference<a href="#archs-philosophy-and-the-community-preference" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Arch Linux is known for its <strong>rolling-release model</strong> and a strong emphasis on <strong>simplicity and openness</strong>. It avoids software with unclear or restrictive licenses whenever possible. Given that MariaDB is licensed under the <strong>GNU General Public License (GPL)</strong> and developed in the open, it aligns more closely with Arch&rsquo;s values than Oracle&rsquo;s MySQL.</p>
+<h2 id="-1-download-mysql-binary">📦 1. Download MySQL Binary<a href="#-1-download-mysql-binary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>In such cases, you can install MySQL directly from the <strong>generic binary tarball</strong> provided by Oracle. This method gives you more control over the version and setup, making it ideal for custom or production environments. Below is a step-by-step guide to installing MySQL on Arch Linux using the official binary distribution.</p>
+<p>Go to: <a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a><br>
+Choose the latest Linux Generic binary (e.g., <code>mysql-8.4.5-linux-glibc2.28-x86_64.tar.xz</code>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/Downloads
+</span></span><span style="display:flex;"><span>tar -xvf mysql-8.4.5-linux-glibc2.28-x86_64.tar.xz
+</span></span><span style="display:flex;"><span>sudo mv mysql-8.4.5-linux-glibc2.28-x86_64 /usr/local/mysql
+</span></span></code></pre></div><hr>
+<h2 id="-2-create-mysql-user-and-group">👤 2. Create MySQL User and Group<a href="#-2-create-mysql-user-and-group" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo groupadd mysql
+</span></span><span style="display:flex;"><span>sudo useradd -r -g mysql -s /bin/false mysql
+</span></span></code></pre></div><hr>
+<h2 id="-3-set-permissions">🔧 3. Set Permissions<a href="#-3-set-permissions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/local/mysql
+</span></span><span style="display:flex;"><span>sudo mkdir mysql-files
+</span></span><span style="display:flex;"><span>sudo chown -R mysql:mysql .
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">750</span> mysql-files
+</span></span></code></pre></div><hr>
+<h2 id="-4-initialize-mysql-data-directory">🛠️ 4. Initialize MySQL Data Directory<a href="#-4-initialize-mysql-data-directory" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ./bin/mysqld --initialize --user<span style="color:#f92672">=</span>mysql
+</span></span></code></pre></div><p>🔐 <strong>Important:</strong> This will output a <strong>temporary root password</strong>, like:</p>
+<pre tabindex="0"><code>A temporary password is generated for root@localhost: aB1cDe2FgH!
+</code></pre><p>➡️ <strong>Note it down</strong>, you&rsquo;ll need it to log in for the first time.</p>
+<hr>
+<h2 id="-5-create-a-mysql-configuration-file">⚙️ 5. Create a MySQL Configuration File<a href="#-5-create-a-mysql-configuration-file" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /usr/local/mysql/my.cnf
+</span></span></code></pre></div><p>Paste:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[mysqld]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">basedir</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/local/mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">datadir</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/local/mysql/data</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">socket</span><span style="color:#f92672">=</span><span style="color:#e6db74">/tmp/mysql.sock</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pid-file</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/local/mysql/data/mysqld.pid</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">user</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql</span>
+</span></span></code></pre></div><hr>
+<h2 id="-6-create-systemd-service">⚙️ 6. Create systemd Service<a href="#-6-create-systemd-service" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/systemd/system/mysql.service
+</span></span></code></pre></div><p>Paste:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Description</span><span style="color:#f92672">=</span><span style="color:#e6db74">MySQL Community Server</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">After</span><span style="color:#f92672">=</span><span style="color:#e6db74">network.target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">forking</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/local/mysql/bin/mysqld_safe --defaults-file=/usr/local/mysql/my.cnf</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ExecStop</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/local/mysql/bin/mysqladmin shutdown</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">User</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Group</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">TimeoutSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">600</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">on-failure</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</span></span></code></pre></div><hr>
+<h2 id="-7-enable-and-start-mysql">🔄 7. Enable and Start MySQL<a href="#-7-enable-and-start-mysql" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl enable mysql
+</span></span><span style="display:flex;"><span>sudo systemctl start mysql
+</span></span></code></pre></div><hr>
+<h2 id="-8-verify-mysql-is-running">🔍 8. Verify MySQL Is Running<a href="#-8-verify-mysql-is-running" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl status mysql
+</span></span></code></pre></div><p>Expected output: <code>active (running)</code></p>
+<hr>
+<h2 id="-9-log-in-with-temporary-password-and-set-new-root-password">🔐 9. Log In with Temporary Password and Set New Root Password<a href="#-9-log-in-with-temporary-password-and-set-new-root-password" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/local/mysql/bin/mysql -u root -p
+</span></span></code></pre></div><p>🔑 Enter the <strong>temporary password</strong> from step 4.</p>
+<p>Then run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;your_secure_password&#39;</span>;
+</span></span></code></pre></div><p>✅ Now you have full access with your new password.</p>
+<hr>
+<h2 id="-10-optional-run-secure-installation-script">🛡️ 10. Optional: Run Secure Installation Script<a href="#-10-optional-run-secure-installation-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo /usr/local/mysql/bin/mysql_secure_installation
+</span></span></code></pre></div><p>This will:</p>
+<ul>
+<li>Remove anonymous users</li>
+<li>Disallow remote root login</li>
+<li>Remove test database</li>
+<li>Reload privilege tables</li>
+</ul>
+<hr>
+<h2 id="-tip-add-mysql-to-your-path">🧠 Tip: Add MySQL to Your PATH<a href="#-tip-add-mysql-to-your-path" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>To avoid typing full paths every time:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=/usr/local/mysql/bin:$PATH&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div>
+      </div></div>
+
+  
+    
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/mirus-ua/hugo-theme-re-terminal" target="_blank">Theme</a> made by <a href="https://github.com/mirus-ua" target="_blank">Mirus</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
