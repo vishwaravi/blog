@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "styles.css",
-	"sourceRoot": "/home/runner/work/personal-blog-site/personal-blog-site",
+	"sourceRoot": "/home/vishwa/vblog",
 	"sources": [
 		"css/base.scss",
 		"themes/re-terminal/assets/css/variables.scss",
