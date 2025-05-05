@@ -4,7 +4,6 @@ languageCode = "en-us"
 # Remove it if you use the theme as a remote Hugo Module.
 theme = "re-terminal"
 pagination.pagerSize = 5
-relativeURLs = true
 
 [params]
   # dir name of your main content (default is `content/posts`).
