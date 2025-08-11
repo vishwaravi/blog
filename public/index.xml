@@ -115,9 +115,11 @@ Choose the latest Linux Generic binary (e.g., &lt;code&gt;mysql-8.4.5-linux-glib
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vishwaravi.github.io/personal-blog-site/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</guid>
-      <description>&lt;p&gt;If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.&lt;/p&gt;
+      <description>&lt;h1 id=&#34;how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux&#34;&gt;How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux&lt;/h1&gt;
+&lt;p&gt;If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.&lt;/p&gt;
 &lt;p&gt;In this guide, I’ll walk you through how to play a distinct sound whenever a USB device is inserted or removed using &lt;code&gt;udev&lt;/code&gt; rules and the PulseAudio sound system.&lt;/p&gt;</description>
-      <content>&lt;p&gt;If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.&lt;/p&gt;
+      <content>&lt;h1 id=&#34;how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux&#34;&gt;How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux&lt;/h1&gt;
+&lt;p&gt;If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.&lt;/p&gt;
 &lt;p&gt;In this guide, I’ll walk you through how to play a distinct sound whenever a USB device is inserted or removed using &lt;code&gt;udev&lt;/code&gt; rules and the PulseAudio sound system.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;-what-youll-achieve&#34;&gt;🔧 What You&amp;rsquo;ll Achieve&lt;/h2&gt;
