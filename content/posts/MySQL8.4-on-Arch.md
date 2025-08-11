@@ -1,13 +1,12 @@
 ---
-title: "MySQL 8.4 Manual Installation on Arch Linux (Binary Package)"
+title: MySQL 8.4 Manual Installation on Arch Linux (Binary Package)
 date: 2025-05-04T12:00:00Z
 draft: false
-description: "Step-by-step guide to manually install MySQL 8.4 on Arch Linux using the official binary tarball."
+description: Step-by-step guide to manually install MySQL 8.4 on Arch Linux using the official binary tarball.
 tags:
   - MySQL
-  - Arch Linux
-  - Manual Installation
-  - Binary Package
+  - Linux
+  - Installation
 ---
 
 ![Image Description](/images/arch_mysql.png)
