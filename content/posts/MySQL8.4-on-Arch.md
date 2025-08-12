@@ -9,7 +9,7 @@ tags:
   - Installation
 ---
 
-![Image Description]({"images/arch_mysql.png" | relURL })
+![Image Description](images/arch_mysql.png)
 ##  MySql in Arch or other Distros :
 
 MySQL provides prebuilt `.deb` packages for Debian and Ubuntu, which can be installed using the APT package manager.

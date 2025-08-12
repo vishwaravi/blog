@@ -18,9 +18,9 @@ for filename in os.listdir(posts_dir):
         # Step 2: Find all Obsidian-style image links: ![[image.png]]
         images = re.findall(r'\[\[([^]]*\.png)\]\]', content)
         print(images)
-        # Step 3: Replace image links with Hugo relURL shortcode
+        # Step 3: Replace image links with simple Markdown image syntax
         for image in images:
-            hugo_image = f'![Image Description]({{\"images/{image.replace(" ", "%20")}\" | relURL }})'
+            hugo_image = f'![Image Description](images/{image.replace(" ", "%20")})'
             content = content.replace(f'![[{image}]]', hugo_image)
             # Step 4: Copy the image to the Hugo static/images directory if it exists
             image_source = os.path.join(attachments_dir, image)
