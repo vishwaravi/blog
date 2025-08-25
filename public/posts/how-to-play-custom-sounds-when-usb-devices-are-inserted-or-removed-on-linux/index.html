@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-    <title>How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux :: Vishwa&#39;s Tech Blog</title>
+    <title>How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux :: Terminal</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,6 +70,11 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 
 <meta name="twitter:card" content="summary" />
 
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="vishwa" />
+
 
 
 <meta property="og:locale" content="en" />
@@ -79,7 +84,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 In this guide, I’ll walk you through how to play a distinct sound whenever a USB device is inserted or removed using udev rules and the PulseAudio sound system.
 " />
 <meta property="og:url" content="https://vishwaravi.github.io/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/" />
-<meta property="og:site_name" content="Vishwa&#39;s Tech Blog" />
+<meta property="og:site_name" content="Terminal" />
 
   <meta property="og:image" content="https://vishwaravi.github.io/blog/og-image.png">
 
@@ -111,7 +116,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
     <div class="header__logo">
       <a href="/">
   <div class="logo">
-    ~/vishwa
+    Terminal
   </div>
 </a>
 
@@ -127,7 +132,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
         
       
         
-          <li><a href="/blog/posts">Posts</a></li>
+          <li><a href="/blog/showcase">Showcase</a></li>
         
       
       
@@ -148,7 +153,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
         
       
         
-          <li><a href="/blog/posts" >Posts</a></li>
+          <li><a href="/blog/showcase" >Showcase</a></li>
         
       
       
@@ -203,51 +208,51 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 <p>The following tools installed:</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S pulseaudio paprefs alsa-utils
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S pulseaudio paprefs alsa-utils
 </span></span></code></pre></div><ol start="3">
 <li>Test that sound playback works by running:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>paplay /usr/share/sounds/freedesktop/stereo/device-omni-added.wav
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">paplay /usr/share/sounds/freedesktop/stereo/device-omni-added.wav
 </span></span></code></pre></div><p>You should hear a test sound confirming your setup is good to go.</p>
 <hr>
 <h2 id="-step-by-step-instructions">🛠️ Step-by-Step Instructions<a href="#-step-by-step-instructions" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <h3 id="1-create-the-sound-playback-script">1. Create the Sound Playback Script<a href="#1-create-the-sound-playback-script" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>First, create a shell script that will be triggered on USB events to play the appropriate sound.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /usr/local/bin/usb-sound.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /usr/local/bin/usb-sound.sh
 </span></span></code></pre></div><p>Paste the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>EVENT_TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Log USB event details</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[USB </span>$EVENT_TYPE<span style="color:#e6db74">] </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Running as: </span><span style="color:#66d9ef">$(</span>whoami<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Trying to play sound...&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Select sound based on event type</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span>$EVENT_TYPE<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;add&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  SOUND<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/share/sounds/freedesktop/stereo/device-omni-added.wav&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span>$EVENT_TYPE<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;remove&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  SOUND<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/share/sounds/freedesktop/stereo/device-omni-removed.wav&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Play sound if the file exists</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> -f <span style="color:#e6db74">&#34;</span>$SOUND<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  sudo -E -u yourusername XDG_RUNTIME_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/run/user/</span><span style="color:#66d9ef">$(</span>id -u yourusername<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> DISPLAY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:0&#34;</span> paplay <span style="color:#e6db74">&#34;</span>$SOUND<span style="color:#e6db74">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log 2&gt;&amp;<span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;paplay exit status: </span>$?<span style="color:#e6db74">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Sound file not found: </span>$SOUND<span style="color:#e6db74">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">EVENT_TYPE</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Log USB event details</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;[USB </span><span class="nv">$EVENT_TYPE</span><span class="s2">] </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Running as: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Trying to play sound...&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Select sound based on event type</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$EVENT_TYPE</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;add&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">SOUND</span><span class="o">=</span><span class="s2">&#34;/usr/share/sounds/freedesktop/stereo/device-omni-added.wav&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$EVENT_TYPE</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;remove&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">SOUND</span><span class="o">=</span><span class="s2">&#34;/usr/share/sounds/freedesktop/stereo/device-omni-removed.wav&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Play sound if the file exists</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> -f <span class="s2">&#34;</span><span class="nv">$SOUND</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  sudo -E -u yourusername <span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&#34;/run/user/</span><span class="k">$(</span>id -u yourusername<span class="k">)</span><span class="s2">&#34;</span> <span class="nv">DISPLAY</span><span class="o">=</span><span class="s2">&#34;:0&#34;</span> paplay <span class="s2">&#34;</span><span class="nv">$SOUND</span><span class="s2">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log 2&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;paplay exit status: </span><span class="nv">$?</span><span class="s2">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;Sound file not found: </span><span class="nv">$SOUND</span><span class="s2">&#34;</span> &gt;&gt; /tmp/usb-sound-udev.log
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
 </span></span></code></pre></div><blockquote>
 <p><strong>Important:</strong> Replace <code>yourusername</code> with your actual Linux username in the script.</p></blockquote>
 <p>Make the script executable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/usb-sound.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod +x /usr/local/bin/usb-sound.sh
 </span></span></code></pre></div><hr>
 <h3 id="2-allow-script-to-run-paplay-without-password">2. Allow Script to Run <code>paplay</code> Without Password<a href="#2-allow-script-to-run-paplay-without-password" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Since <code>udev</code> runs scripts as root, and <code>paplay</code> needs to run as your user to access PulseAudio, we grant passwordless sudo permission for <code>paplay</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo visudo -f /etc/sudoers.d/usb-sound
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo visudo -f /etc/sudoers.d/usb-sound
 </span></span></code></pre></div><p>Add the following line (again, replace <code>yourusername</code>):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yourusername ALL<span style="color:#f92672">=(</span>ALL<span style="color:#f92672">)</span> NOPASSWD: SETENV: /usr/bin/paplay
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yourusername <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: SETENV: /usr/bin/paplay
 </span></span></code></pre></div><p>Save and exit.</p>
 <hr>
 <h3 id="3-prepare-your-sound-files">3. Prepare Your Sound Files<a href="#3-prepare-your-sound-files" class="hanchor" ariaLabel="Anchor">#</a> </h3>
@@ -261,19 +266,19 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 </li>
 </ul>
 <p>You can use your own <code>.wav</code> files by copying them to those locations:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp my-added.wav /usr/share/sounds/freedesktop/stereo/device-omni-added.wav
-</span></span><span style="display:flex;"><span>sudo cp my-removed.wav /usr/share/sounds/freedesktop/stereo/device-omni-removed.wav
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp my-added.wav /usr/share/sounds/freedesktop/stereo/device-omni-added.wav
+</span></span><span class="line"><span class="cl">sudo cp my-removed.wav /usr/share/sounds/freedesktop/stereo/device-omni-removed.wav
 </span></span></code></pre></div><hr>
 <h3 id="4-create-udev-rules-to-trigger-the-script">4. Create Udev Rules to Trigger the Script<a href="#4-create-udev-rules-to-trigger-the-script" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Create a udev rules file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/udev/rules.d/99-usb-sound.rules
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/udev/rules.d/99-usb-sound.rules
 </span></span></code></pre></div><p>Paste:</p>
 <pre tabindex="0"><code class="language-udev" data-lang="udev">ACTION==&#34;add&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_device&#34;, RUN+=&#34;/usr/local/bin/usb-sound.sh add&#34;
 ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_device&#34;, RUN+=&#34;/usr/local/bin/usb-sound.sh remove&#34;
 </code></pre><p>Reload the rules:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo udevadm control --reload-rules
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo udevadm control --reload-rules
 </span></span></code></pre></div><p>(Optional) Test your rule manually:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>udevadm trigger --subsystem-match<span style="color:#f92672">=</span>usb --action<span style="color:#f92672">=</span>add
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">udevadm trigger --subsystem-match<span class="o">=</span>usb --action<span class="o">=</span>add
 </span></span></code></pre></div><hr>
 <h2 id="-youre-all-set">✅ You’re All Set!<a href="#-youre-all-set" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <h3 id="testing">Testing:<a href="#testing" class="hanchor" ariaLabel="Anchor">#</a> </h3>
@@ -288,7 +293,7 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
 <p>Check logs for troubleshooting:</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /tmp/usb-sound-udev.log
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /tmp/usb-sound-udev.log
 </span></span></code></pre></div><hr>
 <h2 id="-maintenance-tips">🧼 Maintenance Tips<a href="#-maintenance-tips" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <ul>
@@ -317,7 +322,7 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
     
 <div class="pagination">
   <div class="pagination__title">
-    <span class="pagination__title-h"></span>
+    <span class="pagination__title-h">Read other posts</span>
     <hr />
   </div>
   <div class="pagination__buttons">
@@ -346,8 +351,8 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
     <footer class="footer">
   <div class="footer__inner">
     
-      <div class="copyright copyright--user">
-        <span>© 2025 Vishwa Ravi</span>
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
     
       <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
       </div>
