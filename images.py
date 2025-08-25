@@ -3,9 +3,9 @@ import re
 import shutil
 
 # Paths
-posts_dir = "/home/vishwa/vblog/content/posts/"
+posts_dir = "/home/vishwa/blog/content/posts/"
 attachments_dir = "/home/vishwa/obsidian_vault/Second_Brain/blog-attachments/"
-static_images_dir = "/home/vishwa/vblog/static/images/"
+static_images_dir = "/home/vishwa/blog/static/images/"
 
 # Step 1: Process each markdown file in the posts directory
 for filename in os.listdir(posts_dir):

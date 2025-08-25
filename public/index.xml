@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>http://localhost:1313/blog/</link>
-    <description>Recent content on </description>
+    <title>Vishwa&#39;s Tech Blog</title>
+    <link>https://vishwaravi.github.io/blog/</link>
+    <description>Recent content on Vishwa&#39;s Tech Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <copyright>© 2025 Vishwa Ravi</copyright>
     <lastBuildDate>Tue, 12 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vishwaravi.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux</title>
-      <link>http://localhost:1313/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</link>
+      <link>https://vishwaravi.github.io/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</guid>
+      <guid>https://vishwaravi.github.io/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</guid>
       <description>&lt;p&gt;If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.&lt;/p&gt;&#xA;&lt;p&gt;In this guide, I’ll walk you through how to play a distinct sound whenever a USB device is inserted or removed using &lt;code&gt;udev&lt;/code&gt; rules and the PulseAudio sound system.&lt;/p&gt;</description>
     </item>
     <item>
       <title>MySQL 8.4 Manual Installation on Arch Linux (Binary Package)</title>
-      <link>http://localhost:1313/blog/posts/mysql8.4-on-arch/</link>
+      <link>https://vishwaravi.github.io/blog/posts/mysql8.4-on-arch/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/posts/mysql8.4-on-arch/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/images/arch_mysql.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;mysql-in-arch-or-other-distros-&#34;&gt;MySql in Arch or other Distros :&lt;/h2&gt;&#xA;&lt;p&gt;MySQL provides prebuilt &lt;code&gt;.deb&lt;/code&gt; packages for Debian and Ubuntu, which can be installed using the APT package manager.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&amp;rsquo;t in the official repositories. Instead, you&amp;rsquo;ll find &lt;strong&gt;MariaDB&lt;/strong&gt;, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of &lt;strong&gt;open-source values, community trust, and long-term sustainability&lt;/strong&gt;.&lt;/p&gt;</description>
+      <guid>https://vishwaravi.github.io/blog/posts/mysql8.4-on-arch/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://vishwaravi.github.io/blog/images/arch_mysql.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;mysql-in-arch-or-other-distros-&#34;&gt;MySql in Arch or other Distros :&lt;/h2&gt;&#xA;&lt;p&gt;MySQL provides prebuilt &lt;code&gt;.deb&lt;/code&gt; packages for Debian and Ubuntu, which can be installed using the APT package manager.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re setting up a database on Arch Linux, you might notice something unexpected — MySQL isn&amp;rsquo;t in the official repositories. Instead, you&amp;rsquo;ll find &lt;strong&gt;MariaDB&lt;/strong&gt;, a drop-in replacement. So, why does Arch provide MariaDB instead of MySQL? The answer lies in a mix of &lt;strong&gt;open-source values, community trust, and long-term sustainability&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
