@@ -10,7 +10,7 @@ sourcePath="/home/vishwa/obsidian_vault/Second_Brain/blog/blog-posts/"
 destinationPath="/home/vishwa/vblog/content/posts/"
 
 # Set GitHub Repo
-myrepo="https://github.com/vishwaravi/personal-blog-site.git"
+myrepo="https://github.com/vishwaravi/blog.git"
 
 # Check for required commands
 for cmd in git rsync python3 hugo; do

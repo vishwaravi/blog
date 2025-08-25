@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/personal-blog-site/</loc>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</loc>
+    <loc>http://localhost:1313/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/tags/linux/</loc>
+    <loc>http://localhost:1313/blog/tags/linux/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/posts/</loc>
+    <loc>http://localhost:1313/blog/posts/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/tags/</loc>
+    <loc>http://localhost:1313/blog/tags/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/tags/installation/</loc>
+    <loc>http://localhost:1313/blog/tags/installation/</loc>
     <lastmod>2025-05-04T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/tags/mysql/</loc>
+    <loc>http://localhost:1313/blog/tags/mysql/</loc>
     <lastmod>2025-05-04T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/posts/mysql8.4-on-arch/</loc>
+    <loc>http://localhost:1313/blog/posts/mysql8.4-on-arch/</loc>
     <lastmod>2025-05-04T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/personal-blog-site/categories/</loc>
+    <loc>http://localhost:1313/blog/categories/</loc>
   </url>
 </urlset>

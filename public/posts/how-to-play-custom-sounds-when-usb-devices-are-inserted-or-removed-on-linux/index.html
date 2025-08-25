@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/personal-blog-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=personal-blog-site/livereload" data-no-instant defer></script>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
   
     <title>How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux :: </title>
   
@@ -13,20 +13,50 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 
   <meta name="robots" content="noodp" />
 
-<link rel="canonical" href="http://localhost:1313/personal-blog-site/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/" />
-
-
+<link rel="canonical" href="http://localhost:1313/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/" />
 
 
 
 
 
   
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
   
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
   
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
   
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
   
-  <link rel="stylesheet" href="http://localhost:1313/personal-blog-site/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
 
 
 
@@ -34,9 +64,8 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 
 
 
-  <link rel="shortcut icon" href="http://localhost:1313/personal-blog-site/img/theme-colors/orange.png">
-  <link rel="apple-touch-icon" href="http://localhost:1313/personal-blog-site/img/theme-colors/orange.png">
-
+<link rel="shortcut icon" href="http://localhost:1313/blog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
 
 
 <meta name="twitter:card" content="summary" />
@@ -54,12 +83,10 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 <meta property="og:description" content="If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.
 In this guide, I’ll walk you through how to play a distinct sound whenever a USB device is inserted or removed using udev rules and the PulseAudio sound system.
 " />
-<meta property="og:url" content="http://localhost:1313/personal-blog-site/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/" />
+<meta property="og:url" content="http://localhost:1313/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/" />
 <meta property="og:site_name" content="" />
 
-  
-    <meta property="og:image" content="http://localhost:1313/personal-blog-site/img/favicon/orange.png">
-  
+  <meta property="og:image" content="http://localhost:1313/blog/og-image.png">
 
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
@@ -78,17 +105,11 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 
 
 
-
-  
-
-
 </head>
-<body class="orange">
+<body>
 
 
-
-
-<div class="container headings--one-size">
+<div class="container">
 
   <header class="header">
   <div class="header__inner">
@@ -107,11 +128,11 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
     <ul class="menu__dropdown">
       
         
-          <li><a href="/personal-blog-site/about">About</a></li>
+          <li><a href="/blog/about">About</a></li>
         
       
         
-          <li><a href="/personal-blog-site/showcase">Showcase</a></li>
+          <li><a href="/blog/showcase">Showcase</a></li>
         
       
       
@@ -127,13 +148,12 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
   <ul class="navigation-menu__inner menu--desktop">
     
       
+        
+          <li><a href="/blog/about" >About</a></li>
+        
       
         
-          <li><a href="/personal-blog-site/about" >About</a></li>
-        
-      
-        
-          <li><a href="/personal-blog-site/showcase" >Showcase</a></li>
+          <li><a href="/blog/showcase" >Showcase</a></li>
         
       
       
@@ -149,21 +169,18 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
     
 <article class="post">
   <h1 class="post-title">
-    <a href="http://localhost:1313/personal-blog-site/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/">How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux</a>
+    <a href="http://localhost:1313/blog/posts/how-to-play-custom-sounds-when-usb-devices-are-inserted-or-removed-on-linux/">How to Play Custom Sounds When USB Devices Are Inserted or Removed on Linux</a>
   </h1>
-  <div class="post-meta"><time class="post-date">2025-08-12</time><span class="post-author">vishwa</span>
-    
-</div>
+  <div class="post-meta"><time class="post-date">2025-08-12</time><span class="post-author">vishwa</span></div>
 
   
     <span class="post-tags">
       
-      #<a href="http://localhost:1313/personal-blog-site/tags/linux/">Linux</a>&nbsp;
+      #<a href="http://localhost:1313/blog/tags/linux/">Linux</a>&nbsp;
       
     </span>
   
   
-
 
 
   
@@ -172,7 +189,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
         <p>If you want a quick and satisfying way to know when a USB device is plugged in or unplugged, why not add custom sounds to those events? Whether for convenience or just for fun, Linux lets you hook into USB device events and play different notification sounds automatically.</p>
 <p>In this guide, I’ll walk you through how to play a distinct sound whenever a USB device is inserted or removed using <code>udev</code> rules and the PulseAudio sound system.</p>
 <hr>
-<h2 id="-what-youll-achieve">🔧 What You&rsquo;ll Achieve<a href="#-what-youll-achieve" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="-what-youll-achieve">🔧 What You&rsquo;ll Achieve<a href="#-what-youll-achieve" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <ul>
 <li>
 <p>Play a sound when <strong>a USB device is inserted</strong></p>
@@ -182,7 +199,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 </li>
 </ul>
 <hr>
-<h2 id="-what-youll-need-before-starting">✅ What You’ll Need Before Starting<a href="#-what-youll-need-before-starting" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="-what-youll-need-before-starting">✅ What You’ll Need Before Starting<a href="#-what-youll-need-before-starting" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <ol>
 <li>
 <p>A working sound system (PulseAudio or PipeWire works fine).</p>
@@ -198,8 +215,8 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>paplay /usr/share/sounds/freedesktop/stereo/device-omni-added.wav
 </span></span></code></pre></div><p>You should hear a test sound confirming your setup is good to go.</p>
 <hr>
-<h2 id="-step-by-step-instructions">🛠️ Step-by-Step Instructions<a href="#-step-by-step-instructions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<h3 id="1-create-the-sound-playback-script">1. Create the Sound Playback Script<a href="#1-create-the-sound-playback-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h2 id="-step-by-step-instructions">🛠️ Step-by-Step Instructions<a href="#-step-by-step-instructions" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="1-create-the-sound-playback-script">1. Create the Sound Playback Script<a href="#1-create-the-sound-playback-script" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>First, create a shell script that will be triggered on USB events to play the appropriate sound.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /usr/local/bin/usb-sound.sh
 </span></span></code></pre></div><p>Paste the following:</p>
@@ -231,14 +248,14 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 <p>Make the script executable:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/usb-sound.sh
 </span></span></code></pre></div><hr>
-<h3 id="2-allow-script-to-run-paplay-without-password">2. Allow Script to Run <code>paplay</code> Without Password<a href="#2-allow-script-to-run-paplay-without-password" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="2-allow-script-to-run-paplay-without-password">2. Allow Script to Run <code>paplay</code> Without Password<a href="#2-allow-script-to-run-paplay-without-password" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Since <code>udev</code> runs scripts as root, and <code>paplay</code> needs to run as your user to access PulseAudio, we grant passwordless sudo permission for <code>paplay</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo visudo -f /etc/sudoers.d/usb-sound
 </span></span></code></pre></div><p>Add the following line (again, replace <code>yourusername</code>):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yourusername ALL<span style="color:#f92672">=(</span>ALL<span style="color:#f92672">)</span> NOPASSWD: SETENV: /usr/bin/paplay
 </span></span></code></pre></div><p>Save and exit.</p>
 <hr>
-<h3 id="3-prepare-your-sound-files">3. Prepare Your Sound Files<a href="#3-prepare-your-sound-files" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="3-prepare-your-sound-files">3. Prepare Your Sound Files<a href="#3-prepare-your-sound-files" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Make sure you have the sound files in place:</p>
 <ul>
 <li>
@@ -252,7 +269,7 @@ In this guide, I’ll walk you through how to play a distinct sound whenever a U
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp my-added.wav /usr/share/sounds/freedesktop/stereo/device-omni-added.wav
 </span></span><span style="display:flex;"><span>sudo cp my-removed.wav /usr/share/sounds/freedesktop/stereo/device-omni-removed.wav
 </span></span></code></pre></div><hr>
-<h3 id="4-create-udev-rules-to-trigger-the-script">4. Create Udev Rules to Trigger the Script<a href="#4-create-udev-rules-to-trigger-the-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="4-create-udev-rules-to-trigger-the-script">4. Create Udev Rules to Trigger the Script<a href="#4-create-udev-rules-to-trigger-the-script" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Create a udev rules file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/udev/rules.d/99-usb-sound.rules
 </span></span></code></pre></div><p>Paste:</p>
@@ -263,8 +280,8 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
 </span></span></code></pre></div><p>(Optional) Test your rule manually:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>udevadm trigger --subsystem-match<span style="color:#f92672">=</span>usb --action<span style="color:#f92672">=</span>add
 </span></span></code></pre></div><hr>
-<h2 id="-youre-all-set">✅ You’re All Set!<a href="#-youre-all-set" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<h3 id="testing">Testing:<a href="#testing" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h2 id="-youre-all-set">✅ You’re All Set!<a href="#-youre-all-set" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="testing">Testing:<a href="#testing" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <ul>
 <li>
 <p>Plug in a USB device → You should hear the “device added” sound.</p>
@@ -278,7 +295,7 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /tmp/usb-sound-udev.log
 </span></span></code></pre></div><hr>
-<h2 id="-maintenance-tips">🧼 Maintenance Tips<a href="#-maintenance-tips" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="-maintenance-tips">🧼 Maintenance Tips<a href="#-maintenance-tips" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <ul>
 <li>
 <p><strong>Change sounds anytime</strong> — just replace the <code>.wav</code> files under <code>/usr/share/sounds/freedesktop/stereo/</code>.</p>
@@ -294,7 +311,7 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
 </li>
 </ul>
 <hr>
-<h3 id="final-thoughts">Final Thoughts<a href="#final-thoughts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="final-thoughts">Final Thoughts<a href="#final-thoughts" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Adding audio feedback to USB events is a simple yet nifty trick to enhance your Linux experience. It makes plugging in devices a bit more fun and informative without peeking at the screen.</p>
 <p>Give it a try, customize your sounds, and let me know how it works for you!</p>
 <hr>
@@ -304,22 +321,21 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
   
     
 <div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        
-        <span class="button next">
-            <a href="http://localhost:1313/personal-blog-site/posts/mysql8.4-on-arch/">
-                <span class="button__text">MySQL 8.4 Manual Installation on Arch Linux (Binary Package)</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+    
+    
+      <a href="http://localhost:1313/blog/posts/mysql8.4-on-arch/" class="button inline next">
+         [<span class="button__text">MySQL 8.4 Manual Installation on Arch Linux (Binary Package)</span>] &gt;
+      </a>
+    
+  </div>
 </div>
+
 
   
 
@@ -338,7 +354,7 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
       <div class="copyright">
         <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
     
-      <span>:: <a href="https://github.com/mirus-ua/hugo-theme-re-terminal" target="_blank">Theme</a> made by <a href="https://github.com/mirus-ua" target="_blank">Mirus</a></span>
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
       </div>
   </div>
 </footer>
@@ -348,10 +364,7 @@ ACTION==&#34;remove&#34;, SUBSYSTEM==&#34;usb&#34;, ENV{DEVTYPE}==&#34;usb_devic
 
 
 
-<script type="text/javascript" src="/personal-blog-site/bundle.min.js"></script>
-
-
-
+<script type="text/javascript" src="/blog/bundle.min.js"></script>
 
 
 
